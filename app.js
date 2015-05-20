@@ -1,4 +1,4 @@
-if (typeof __decorate !== "function") __decorate = function (decorators, target, key, desc) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
         case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
@@ -6,24 +6,28 @@ if (typeof __decorate !== "function") __decorate = function (decorators, target,
         case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
     }
 };
-if (typeof __metadata !== "function") __metadata = function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var angular2_1 = require('angular2/angular2');
-// Annotation section
 var MyAppComponent = (function () {
-    function MyAppComponent() {
-        this.name = 'Alice';
+    function MyAppComponent(friendsService) {
+        this.myName = 'Alberto';
+        this.names = friendsService.names;
     }
     MyAppComponent = __decorate([
         angular2_1.Component({
-            selector: 'my-app'
+            selector: 'display',
+            injectables: [FriendsService]
         }),
         angular2_1.View({
-            template: '<h1>Hello {{ name }}</h1>'
-        }), 
-        __metadata('design:paramtypes', [])
+            template: "\n        <p>My name: {{ myName }}</p>\n        <p>Friends:</p>\n        <ul>\n          <li *for=\"#name of names\">\n            {{ name }}\n          </li>\n        </ul>\n        <p *if=\"names.length > 3\">You have many friends!</p>\n      ",
+            directives: [angular2_1.For, angular2_1.If]
+        })
     ], MyAppComponent);
     return MyAppComponent;
+})();
+var FriendsService = (function () {
+    function FriendsService() {
+        this.names = ["Aarav", "Martín", "Shannon"];
+    }
+    return FriendsService;
 })();
 angular2_1.bootstrap(MyAppComponent);
