@@ -7,27 +7,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     }
 };
 var angular2_1 = require('angular2/angular2');
-var MyAppComponent = (function () {
-    function MyAppComponent(friendsService) {
-        this.myName = 'Alberto';
-        this.names = friendsService.names;
+var TodoList = (function () {
+    function TodoList() {
+        this.todos = ["Eat Breakfast", "Walk Dog", "Breathe"];
     }
-    MyAppComponent = __decorate([
+    TodoList.prototype.addTodo = function (todo) {
+        this.todos.push(todo);
+    };
+    TodoList.prototype.doneTyping = function ($event) {
+        if ($event.which === 13) {
+            this.addTodo($event.target.value);
+            $event.target.value = null;
+        }
+    };
+    TodoList = __decorate([
         angular2_1.Component({
-            selector: 'display',
-            injectables: [FriendsService]
+            selector: 'todo-list'
         }),
         angular2_1.View({
-            template: "\n        <p>My name: {{ myName }}</p>\n        <p>Friends:</p>\n        <ul>\n          <li *for=\"#name of names\">\n            {{ name }}\n          </li>\n        </ul>\n        <p *if=\"names.length > 3\">You have many friends!</p>\n      ",
+            template: "\n    <ul>\n      <li *for=\"#todo of todos\">\n        {{ todo }}\n      </li>\n    </ul>\n\n    <input #todotext (keyup)=\"doneTyping($event)\">\n    <button (click)=\"addTodo(todotext.value)\">Add Todo</button>\n    ",
             directives: [angular2_1.For, angular2_1.If]
         })
-    ], MyAppComponent);
-    return MyAppComponent;
+    ], TodoList);
+    return TodoList;
 })();
-var FriendsService = (function () {
-    function FriendsService() {
-        this.names = ["Aarav", "Martín", "Shannon"];
-    }
-    return FriendsService;
-})();
-angular2_1.bootstrap(MyAppComponent);
+angular2_1.bootstrap(TodoList);

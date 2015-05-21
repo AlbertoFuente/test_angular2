@@ -1,38 +1,38 @@
+//TypeScript
 import {Component, View, bootstrap, For, If} from 'angular2/angular2';
 
-// Annotation section
 @Component({
-  selector: 'display',
-  injectables: [FriendsService]
+  selector: 'todo-list'
 })
 @View({
-    template: `
-        <p>My name: {{ myName }}</p>
-        <p>Friends:</p>
-        <ul>
-          <li *for="#name of names">
-            {{ name }}
-          </li>
-        </ul>
-        <p *if="names.length > 3">You have many friends!</p>
-      `,
-      directives: [For, If]
+  template: `
+    <ul>
+      <li *for="#todo of todos">
+        {{ todo }}
+      </li>
+    </ul>
+
+    <input #todotext (keyup)="doneTyping($event)">
+    <button (click)="addTodo(todotext.value)">Add Todo</button>
+    `,
+  directives: [For, If]
 })
-// Component controller
-class MyAppComponent {
-    myName: string;
-    names: Array<string>;
+class TodoList {
+  todos: Array<string>;
 
-  constructor(friendsService: FriendsService) {
-    this.myName = 'Alberto';
-    this.names = friendsService.names;
-  }
-}
-class FriendsService {
-  names: Array<string>;
   constructor() {
-    this.names = ["Aarav", "Martín", "Shannon"];
+    this.todos = ["Eat Breakfast", "Walk Dog", "Breathe"];
+  }
+
+  addTodo(todo: string) {
+    this.todos.push(todo);
+  }
+
+  doneTyping($event) {
+    if($event.which === 13) {
+      this.addTodo($event.target.value);
+      $event.target.value = null;
+    }
   }
 }
-
-bootstrap(MyAppComponent);
+bootstrap(TodoList);
