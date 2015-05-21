@@ -25,7 +25,9 @@ class TodoList {
   }
 
   addTodo(todo: string) {
-    this.todos.push(todo);
+      if (typeof todo === 'string') {
+          this.todos.push(todo);
+      }
   }
 
   doneTyping($event) {
