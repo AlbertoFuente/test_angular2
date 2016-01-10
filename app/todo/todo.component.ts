@@ -9,9 +9,13 @@ export class AppComponent {
     public todos = ["Eat Breakfast", "Walk Dog", "Breathe"];
 
     addTodo(todo: string) {
-        if (typeof todo === 'string') {
+        if (this.checkTodo(todo) < 0 && typeof todo === 'string' && todo !== '') {
             this.todos[this.todos.length] = todo;
         }
+    }
+
+    checkTodo(todo) {
+        return this.todos.findIndex(x => x.toLowerCase() === todo.toLowerCase());
     }
 
     doneTyping($event) {
