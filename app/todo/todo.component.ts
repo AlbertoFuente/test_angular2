@@ -18,6 +18,10 @@ export class AppComponent {
         return this.todos.findIndex(x => x.toLowerCase() === todo.toLowerCase());
     }
 
+    removeListElement(elem) {
+        this.todos.splice(elem, 1);
+    }
+
     doneTyping($event) {
       if($event.which === 13) {
         this.addTodo($event.target.value);
