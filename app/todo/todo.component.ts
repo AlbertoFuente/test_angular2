@@ -8,7 +8,7 @@ import {Component} from 'angular2/core';
 export class AppComponent {
     public todos = ["Eat Breakfast", "Walk Dog", "Breathe"];
 
-    addTodo(todo: string) {
+    addTodo(todo) {
         if (this.checkTodo(todo) < 0 && typeof todo === 'string' && todo !== '') {
             this.todos[this.todos.length] = todo;
         }
