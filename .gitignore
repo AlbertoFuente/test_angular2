@@ -1,5 +1,10 @@
 node_modules/
 
+todo.component.js
+todo.component.js.map
+boot.js
+boot.js.map
+
 # Build and Release Folders
 bin/
 bin-debug/
