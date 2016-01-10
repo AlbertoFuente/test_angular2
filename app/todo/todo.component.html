@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="#todo of todos">
+  <li *ngFor="#todo of todos" (click)="removeListElement(todo)">
     {{ todo }}
   </li>
 </ul>
