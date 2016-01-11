@@ -5,6 +5,8 @@ todo.component.js.map
 boot.js
 boot.js.map
 
+coverage
+
 # Build and Release Folders
 bin/
 bin-debug/
