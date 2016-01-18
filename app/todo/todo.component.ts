@@ -19,11 +19,10 @@ export class AppComponent {
     }
 
     removeListElement(elem) {
-        this.todos.forEach((x,index) => {
-            if (x === elem) {
-                this.todos.splice(index);
-            }
-        });
+        let index = this.todos.indexOf(elem);
+        if(index !== -1) {
+        	this.todos.splice(index, 1);
+        }
     }
 
     doneTyping($event) {
