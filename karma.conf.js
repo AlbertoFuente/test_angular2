@@ -1,11 +1,11 @@
 // Karma configuration
-// Generated on Mon Jan 11 2016 20:47:27 GMT+0100 (CET)
+// Generated on Mon Jan 18 2016 19:21:12 GMT+0100 (CET)
 
 module.exports = function(config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: './',
 
 
         // frameworks to use
@@ -15,32 +15,52 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'node_modules/angular2/bundles/angular2-polyfills.js',
+            'node_modules/zone.js/dist/zone-microtask.js',
+            'node_modules/zone.js/dist/long-stack-trace-zone.js',
+            'node_modules/zone.js/dist/jasmine-patch.js',
+            'node_modules/traceur/bin/traceur-runtime.js',
+            'node_modules/traceur/bin/traceur.js',
             'node_modules/systemjs/dist/system.src.js',
-            'node_modules/rxjs/bundles/Rx.js',
-            'node_modules/angular2/bundles/angular2.dev.js',
-            'tests/*.js',
-            'app/boot.js',
-            'app/todo/todo.component.js'
+            'node_modules/reflect-metadata/Reflect.js',
+
+            {
+                pattern: 'node_modules/angular2/**/*.js',
+                included: false,
+                watched: false
+            }, {
+                pattern: 'node_modules/rxjs/**/*.js',
+                included: false,
+                watched: false
+            }, {
+                pattern: 'node_modules/systemjs/dist/system-polyfills.js',
+                included: false,
+                watched: false
+            }, {
+                pattern: 'app/todo/todo.component.js',
+                included: false,
+                watched: true
+            }, {
+                pattern: 'app/todo/todo.component.spec.js',
+                included: false,
+                watched: true
+            },
+            'test.main.js'
         ],
 
 
         // list of files to exclude
-        exclude: [],
+        exclude: ['node_modules/angular2/**/*_spec.js'],
 
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-            'app/boot.js': ['coverage'],
-            'app/todo/todo.component.js': ['coverage']
-        },
+        preprocessors: {},
 
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['spec', 'coverage'],
+        reporters: ['spec'],
 
 
         // web server port
@@ -71,12 +91,6 @@ module.exports = function(config) {
 
         // Concurrency level
         // how many browser should be started simultaneous
-        concurrency: Infinity,
-
-        // optionally, configure the reporter
-        coverageReporter: {
-            type: 'html',
-            dir: 'coverage/'
-        }
+        concurrency: Infinity
     })
 }
