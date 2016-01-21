@@ -1,5 +1,5 @@
 import {
-    describe, expect, it, xit, inject, beforeEachProviders
+    describe, expect, it, beforeEachProviders
 }
 from 'angular2/testing';
 import {
