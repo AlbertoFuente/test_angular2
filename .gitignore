@@ -4,6 +4,10 @@ todo.component.js
 todo.component.js.map
 todo.component.spec.js
 todo.component.spec.js.map
+
+tabs-component.js
+tabs-component.js.map
+
 boot.js
 boot.js.map
 
