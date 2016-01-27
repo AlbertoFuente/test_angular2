@@ -1,3 +1,4 @@
+<div class="container">
 <ul>
   <li *ngFor="#todo of todos" (click)="removeListElement(todo)">
     {{ todo }}
@@ -6,3 +7,4 @@
 
 <input #todotext (keyup)="doneTyping($event)">
 <button (click)="addTodo(todotext.value)">Add Todo</button>
+</div>
