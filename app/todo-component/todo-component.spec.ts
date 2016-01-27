@@ -5,7 +5,7 @@ from 'angular2/testing';
 import {
     AppComponent
 }
-from './todo.component';
+from './todo-component';
 
 export function main() {
     describe('AppComponent', () => {

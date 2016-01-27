@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'todo-list',
-  templateUrl: 'app/todo/todo.component.html'
+  templateUrl: 'app/todo-component/todo-component.html'
 })
 export class AppComponent {
     public todos = ["Eat Breakfast", "Walk Dog", "Breathe"];
