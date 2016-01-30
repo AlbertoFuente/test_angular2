@@ -21,9 +21,7 @@ module.exports = function(config) {
             'node_modules/traceur/bin/traceur-runtime.js',
             'node_modules/traceur/bin/traceur.js',
             'node_modules/systemjs/dist/system.src.js',
-            'node_modules/reflect-metadata/Reflect.js',
-
-            {
+            'node_modules/reflect-metadata/Reflect.js', {
                 pattern: 'node_modules/angular2/**/*.js',
                 included: false,
                 watched: false
@@ -54,13 +52,20 @@ module.exports = function(config) {
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {},
+        preprocessors: {
+            'app/todo-component/todo-component.js': ['coverage']
+        },
 
+        plugins: [
+            'karma-jasmine',
+            'karma-coverage',
+            'karma-chrome-launcher'
+        ],
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['spec'],
+        reporters: ['spec', 'coverage'],
 
 
         // web server port
@@ -91,6 +96,12 @@ module.exports = function(config) {
 
         // Concurrency level
         // how many browser should be started simultaneous
-        concurrency: Infinity
+        concurrency: Infinity,
+
+        // optionally, configure the reporter
+        coverageReporter: {
+            type: 'html',
+            dir: 'coverage/'
+        }
     })
 }
