@@ -36,11 +36,11 @@ module.exports = function(config) {
                 included: false,
                 watched: false
             }, {
-                pattern: 'app/todo/todo.component.js',
+                pattern: 'app/todo-component/todo-component.js',
                 included: false,
                 watched: true
             }, {
-                pattern: 'app/todo/todo.component.spec.js',
+                pattern: 'app/todo-component/todo-component.spec.js',
                 included: false,
                 watched: true
             },
