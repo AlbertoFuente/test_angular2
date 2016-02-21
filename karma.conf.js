@@ -34,13 +34,25 @@ module.exports = function(config) {
                 included: false,
                 watched: false
             }, {
-                pattern: 'app/todo-component/todo-component.js',
+                pattern: 'app/**/*.ts',
+                included: false,
+                watched: false
+            }, {
+                pattern: 'dist/**/*.js',
                 included: false,
                 watched: true
             }, {
-                pattern: 'app/todo-component/todo-component.spec.js',
+                pattern: 'dist/**/*.spec.js',
                 included: false,
                 watched: true
+            }, {
+                pattern: 'dist/**/*.js.map',
+                included: false,
+                watched: false
+            }, {
+                pattern: 'dist/**/*.spec.js.map',
+                included: false,
+                watched: false
             },
             'test.main.js'
         ],
@@ -53,7 +65,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'app/todo-component/todo-component.js': ['coverage']
+            'dist/**/!(*spec).js': ['coverage']
         },
 
         plugins: [
