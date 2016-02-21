@@ -10,11 +10,12 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 __karma__.loaded = function() {};
 
 System.config({
-    baseURL: '/base/',
-    defaultJSExtensions: true,
-    paths: {
-        'angular2/*': 'node_modules/angular2/*.js',
-        'rxjs/*': 'node_modules/rxjs/*.js'
+    packages: {
+        'base/dist': {
+            defaultExtension: false,
+            format: 'cjs',
+            map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
+        }
     }
 });
 
