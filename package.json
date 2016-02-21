@@ -5,13 +5,14 @@
         "tsc": "tsc",
         "tsc:w": "tsc -w",
         "lite": "lite-server --port 3000",
-        "test": "karma start",
+        "test": "karma start karma.conf.js",
         "coverage": "http-server -c-1 -o -p 4000 ./coverage/*",
-        "start": "concurrent \"npm run tsc:w\" \"npm run coverage\" \"npm run lite\" \"npm run test\""
+        "runTests": "concurrent \"npm run test\" \"npm run coverage\"",
+        "start": "concurrent \"npm run tsc:w\" \"npm run lite\""
     },
     "license": "MIT",
     "dependencies": {
-        "angular2": "2.0.0-beta.0",
+        "angular2": "2.0.0-beta.1",
         "bootstrap": "^3.3.6",
         "es6-promise": "^3.0.2",
         "es6-shim": "^0.33.3",
